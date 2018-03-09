@@ -4,20 +4,19 @@
 #include <stdint.h>
 
 struct cellule{
-    char* nom;
-    char* numero;
+    const char* nom;
+    const char* numero;
     struct cellule* suiv;
-}
+};
 
 struct liste{
     struct cellule* tete;
-}
+};
 
 struct annuaire{
     struct liste* listes;
-    int taillelogique;
-    int taillephysique;
-}
+    int taille;
+};
 
 // Cree un nouvel annuaire, initialement vide
 struct annuaire *creer();
