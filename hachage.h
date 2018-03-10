@@ -2,7 +2,9 @@
 #define _HACHAGE_
 
 #include <stdint.h>
-
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 struct cellule{
     const char* nom;
     const char* numero;
@@ -11,11 +13,12 @@ struct cellule{
 
 struct liste{
     struct cellule* tete;
+    size_t taille;
 };
 
 struct annuaire{
     struct liste* listes;
-    int taille;
+    size_t taille;
 };
 
 // Cree un nouvel annuaire, initialement vide
@@ -62,7 +65,7 @@ const char *rechercher_numero(struct annuaire *an, const char *nom);
 void supprimer(struct annuaire *an, const char *nom);
 
 
-
+void afficherListe(struct liste liste,int i);
 // debug
 void afficher(struct annuaire *an);
 
