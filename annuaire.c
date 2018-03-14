@@ -1,4 +1,4 @@
-#include "hachage.c"
+#include "hachage.h"
 
 void testInserer(struct annuaire *an){
     printf("Test Insertion \n");
@@ -46,15 +46,16 @@ void testRedimension(struct annuaire *an){
     inserer(an, "Pierre", "0634");
     inserer(an, "Rac", "0634");
     inserer(an, "Napo", "0634");
-    inserer(an, "Napol", "0634");
-    inserer(an, "Napol", "0635");
-    inserer(an, "Raul", "0635");
-    inserer(an, "JP", "0635");
-    inserer(an, "Alex", "0635");
-    inserer(an, "JJ", "0634");
-    inserer(an, "Jean", "0634");
-    inserer(an, "La", "0634");
-    inserer(an, "Pika", "0634");
+    supprimer(an,"Pika");
+    supprimer(an,"La");
+//    supprimer(an,"Jean");
+//    supprimer(an,"Raul");
+//    supprimer(an,"Napo");
+//    supprimer(an,"Napol");
+//    supprimer(an,"Alex");
+//    supprimer(an, "Pierre");
+//    supprimer(an, "JJ");
+//    supprimer(an, "JP");
     inserer(an, "Bulbi", "0635");
     inserer(an, "Annibal", "0635");
     inserer(an, "Cesar", "0635");
@@ -62,19 +63,19 @@ void testRedimension(struct annuaire *an){
     inserer(an, "Ogodei", "0634");
     inserer(an, "Kubilai", "0634");
     inserer(an, "Auguste", "0634");
-    inserer(an, "Scipion", "0634");
-    inserer(an, "Napoleon", "0635");
-    inserer(an, "Alexandre", "0635");
-    inserer(an, "Frederic", "0635");
-    inserer(an, "Djebe", "0635");
-    inserer(an, "Subotei", "0634");
-    inserer(an, "Desaix", "0634");
-    inserer(an, "Lannes", "0634");
-    inserer(an, "Davout", "0634");
-    inserer(an, "Murat", "0635");
-    inserer(an, "Berthier", "0635");
-    inserer(an, "Grouchy", "0635");
-    inserer(an, "Klebr", "0635");
+//    inserer(an, "Scipion", "0634");
+//    inserer(an, "Napoleon", "0635");
+//    inserer(an, "Alexandre", "0635");
+//    inserer(an, "Frederic", "0635");
+//    inserer(an, "Djebe", "0635");
+//    inserer(an, "Subotei", "0634");
+//    inserer(an, "Desaix", "0634");
+//    inserer(an, "Lannes", "0634");
+//    inserer(an, "Davout", "0634");
+//    inserer(an, "Murat", "0635");
+//    inserer(an, "Berthier", "0635");
+//    inserer(an, "Grouchy", "0635");
+//    inserer(an, "Klebr", "0635");
 
 }
 
@@ -86,6 +87,6 @@ int main()
 //    testRechercherNumero(an);
 //    afficher(an);
 //    testSupprimer(an);
-//    liberer(an);
+    liberer(an);
 }
 

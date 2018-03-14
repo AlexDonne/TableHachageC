@@ -25,8 +25,13 @@ struct annuaire{
 struct annuaire *creer();
 
 // Libere tous les couples <nom, numero> d'un annuaire, et l'annaire lui-meme
+void libererListe(struct liste* liste);
 void liberer(struct annuaire *an);
-
+unsigned int hachage (const char *nom);
+struct cellule* creerCellule(const char* nom,const char* numero);
+const char* insererDansListe(struct liste* liste, struct cellule *cellule);
+struct cellule* elementsAnnuaire(struct annuaire* an, int nbElement);
+void redimensionner(struct annuaire *an, int agrandir, int nbElements);
 /*
  * Associe un numero a un nom.
  * Si l'annuaire contenait deja une entree de cle nom, alors la valeur associee
@@ -59,15 +64,15 @@ const char *inserer(struct annuaire *an, const char *nom, const char *numero);
  */
 const char *rechercher_numero(struct annuaire *an, const char *nom);
 
-
+void supprimerDeListe(struct liste *liste, const char*nom);
 /*
  * Supprime l'entree de cle nom si elle presente, sans effet sinon */
 void supprimer(struct annuaire *an, const char *nom);
 
-
+void afficherCellule(struct cellule* cellule);
 void afficherListe(struct liste liste,int i);
 // debug
 void afficher(struct annuaire *an);
-
+int nombreElements(struct annuaire* an);
 
 #endif
