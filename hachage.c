@@ -82,7 +82,12 @@ const char *insererDansListe(struct liste *liste, struct cellule *cellule) {
     return aRetourner;
 }
 
-
+/**
+ * Retourne tableau avec toutes les cellules présentes dans l'annuaire (pour les réinsérer ensuite)
+ * @param an
+ * @param nbElement
+ * @return
+ */
 struct cellule *elementsAnnuaire(struct annuaire *an, int nbElement) {
     struct cellule *elements = malloc(nbElement * sizeof(struct cellule));
     int enCours = 0;
@@ -139,10 +144,7 @@ const char *inserer(struct annuaire *an, const char *nom, const char *numero) {
     int nbElements = nombreElements(an);
     float nb = (float) nbElements;
     if (nb / an->taille * 100 > 75) {
-        printf("Redimensionnage, %s\n", nom);
-        afficher(an);
         redimensionner(an, 1, nbElements);
-        afficher(an);
     }
     return res;
 
@@ -150,6 +152,10 @@ const char *inserer(struct annuaire *an, const char *nom, const char *numero) {
 
 const char *rechercher_numero(struct annuaire *an, const char *nom) {
     size_t index = hachage(nom) % an->taille;
+    if (an->listes[index].taille == 0){
+        return NULL;
+    }
+
     struct cellule *parc = an->listes[index].tete;
     while (parc != NULL) {
         if (!strcmp(parc->nom, nom)) {
@@ -190,11 +196,9 @@ void supprimer(struct annuaire *an, const char *nom) {
     size_t index = hachage(nom) % an->taille;
     supprimerDeListe(&(an->listes[index]), nom);
     int nbElements = nombreElements(an);
-    printf("LL:%d\n", nbElements);
-    if (nbElements / an->taille * 100 < 15) {
-        printf("Redimensionnage, %s\n", nom);
+    float nb = (float) nbElements;
+    if (nb / an->taille * 100 < 15) {
         redimensionner(an, 0, nbElements);
-        afficher(an);
     }
 }
 
